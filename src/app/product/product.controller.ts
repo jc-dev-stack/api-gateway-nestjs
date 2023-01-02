@@ -9,15 +9,23 @@ export class ProductController {
 
     @Get()
     async getProducts() {
-        const products = await this.productService.getAllProducts();
-        return products;
+        try {
+            const products = await this.productService.getAllProducts();
+            return products;
+        } catch (error) {
+            return error;
+        }
     }
 
     @Get(':id')
     async getOneProduct(
         @Param('id') id: string
     ) {
-        const product = await this.productService.getOneProduct(parseInt(id));
-        return product;
+        try {
+            const product = await this.productService.getOneProduct(parseInt(id));
+            return product;
+        } catch (error) {
+            return error;
+        }
     }
 }
