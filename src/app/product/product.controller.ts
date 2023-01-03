@@ -1,5 +1,6 @@
 import { ProductService } from './product.service';
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { CreateProductDTO } from './dtos/create.product.dto';
 
 @Controller('/apigateway/product')
 export class ProductController {
@@ -24,6 +25,17 @@ export class ProductController {
         try {
             const product = await this.productService.getOneProduct(parseInt(id));
             return product;
+        } catch (error) {
+            return error;
+        }
+    }
+
+    @Post()
+    async createProduct(
+        @Body() body: CreateProductDTO
+    ) {
+        try {
+            await this.productService.createProduct(body);
         } catch (error) {
             return error;
         }
