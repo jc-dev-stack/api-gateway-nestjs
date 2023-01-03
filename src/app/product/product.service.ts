@@ -28,7 +28,6 @@ export class ProductService {
     }
 
     async createProduct(product: CreateProductDTO) {
-        console.log(product);
         this.productClient.emit(PRODUCT_SERVICE_TOPICS.create_product, RequestTopic.toString(product));
     }
 }
