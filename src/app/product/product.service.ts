@@ -1,4 +1,4 @@
-import { RequestTopic } from './mapper/request.topic';
+import { MapperKafka } from './mapper/mapper.kafka';
 import { PRODUCT_SERVICE_TOPICS } from './../../topics/product-service';
 import { CreateProductDTO } from './dtos/create.product.dto';
 import { Inject, Injectable } from '@nestjs/common';
@@ -28,6 +28,6 @@ export class ProductService {
     }
 
     async createProduct(product: CreateProductDTO) {
-        this.productClient.emit(PRODUCT_SERVICE_TOPICS.create_product, RequestTopic.toString(product));
+        this.productClient.emit(PRODUCT_SERVICE_TOPICS.create_product, MapperKafka.toKafka(product));
     }
 }

@@ -2,7 +2,7 @@ import { ProductService } from './product.service';
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { CreateProductDTO } from './dtos/create.product.dto';
 
-@Controller('/apigateway/product')
+@Controller('/apigateway/products')
 export class ProductController {
     constructor(
         private readonly productService: ProductService
