@@ -1,9 +1,9 @@
 import { Product } from "src/@types/product";
 
 export class MapperKafka {
-    static toKafka(product: Product) {
+    static toKafka(data: any) {
         return (
-            JSON.stringify(product)
+            JSON.stringify(data)
         );
     }
 }
